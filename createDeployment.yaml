@@ -13,7 +13,7 @@ metadata:
     githubrepo: "https://github.com/kmayer10/thinknyx-optum.git"
     
 spec: 
-  replicas: 3
+  replicas: 4
   template: 
     metadata: 
       name: kul
@@ -24,6 +24,8 @@ spec:
       containers: 
       - name: kul
         image: httpd
+      nodeSelector: 
+        bu: cde
   selector: 
     matchLabels: 
       client: optum
