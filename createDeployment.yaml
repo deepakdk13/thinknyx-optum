@@ -28,6 +28,9 @@ spec:
           requests:
             memory: "64Mi"
             cpu: "125m"
+          limits: 
+            memory: "96Mi"
+            cpu: "200m"
       nodeSelector: 
         bu: cde
   selector: 
