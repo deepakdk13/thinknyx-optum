@@ -24,6 +24,10 @@ spec:
       containers: 
       - name: kul
         image: httpd
+        resources: 
+          requests:
+            memory: "64Mi"
+            cpu: "125m"
       nodeSelector: 
         bu: cde
   selector: 
