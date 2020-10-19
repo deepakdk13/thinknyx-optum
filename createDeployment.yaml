@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata: 
+  name: day1
+  namespace: kul
+  labels: 
+    client: optum
+    type: training
+  annotations: 
+    prodsupport: support@thinknyx.com
+    supportnumber: "9876543210"
+    githubrepo: "https://github.com/kmayer10/thinknyx-optum.git"
+    
+spec: 
+  replicas: 3
+  template: 
+    metadata: 
+      name: kul
+      labels:
+        client: optum
+        day: "1"
+    spec: 
+      containers: 
+      - name: kul
+        image: httpd
+  selector: 
+    matchLabels: 
+      client: optum
+      day: "1"
