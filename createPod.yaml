@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: kul
+  namespace: kul
+  labels:
+    client: optum
+    day: "1"
+spec: 
+  containers: 
+  - name: kul
+    image: httpd
