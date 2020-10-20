@@ -13,3 +13,5 @@ spec:
     envFrom: 
     - configMapRef: 
         name: cm-1
+    - secretRef: 
+        name: db-cred
