@@ -1,0 +1,390 @@
+  236  kubectl get nodes
+  237  kubeadm token create --print-join-command
+  238  ssh root@3.235.94.16
+  239  ssh root@3.91.25.225
+  240  kubectl get nodes
+  241  pwd
+  242  cd ../thinknyx-optum/
+  243  ll
+  244  kubectl apply -f createNamespace.yaml
+  245  kubectl apply -f createDeployment.yaml
+  246  kubectl get all -n kul
+  247  kubectl label node node1 bu=cde
+  248  kubectl label node node-1 bu=cde
+  249  kubectl label node node-2 bu=cde
+  250  kubectl get all -n kul
+  251  vi createService.yaml
+  252  vi createService.yaml
+  253  kubectl apply -f createService.yaml
+  254  kubectl get all -n kul
+  255  kubectl describe service/day1-svc -n kul
+  256  clear
+  257  kubectl get pods -n kul -o wide
+  258  git add createService.yaml
+  259  git commit -m "added Service yaml"
+  260  git config --global user.email "optum@day2.com"
+  261  git config --global user.name "Kul Day2"
+  262  git commit -m "added Service yaml"
+  263  git push origin master
+  264  vi createService.yaml
+  265  kubectl apply -f createService.yaml
+  266  kubectl get svc -n kul
+  267  git commit -am "added external-ips tag"
+  268  clear
+  269  cat createService.yaml
+  270  kubectl get svc -n kul
+  271  git push origi master
+  272  git push origin master
+  273  vi createService.yaml
+  274  kubectl apply -f createService.yaml
+  275  kubectl get svc -n kul
+  276  clear
+  277  kubectl get pods -n kube-system
+  278  kubectl config current-context --namespace kul
+  279  kubectl config --help
+  280  kubectl config set-context -- current --namespace kul
+  281  kubectl config set-context --current --namespace kul
+  282  clear
+  283  kubectl get pods
+  284  cat /root/.kube/config
+  285  q!
+  286  clear
+  287  kubectl get svc
+  288  kubectl describe svc day1-svc
+  289  kubectl get pods | grep -i  day=1
+  290  kubectl get pods --show-labels | grep -i  day=1
+  291  clear
+  292  kubectl get pods -n kube-system
+  293  kubectl describe svc day1-svc
+  294  clear
+  295  kubectl create deployment nginx --image nginx
+  296  kubectl get deployment
+  297  kubectl get pods -o wide
+  298  kubectl get pods -o wide  --show-labels
+  299  cp createService.yaml createServiceNginx.yaml
+  300  vi createServiceNginx.yaml
+  301  kubectl apply -f createServiceNginx.yaml
+  302  kubectl get svc
+  303  kubectl describe svc day1-svc
+  304  kubectl apply -f createService.yaml
+  305  kubectl describe svc day1-svc
+  306  vi createServiceNginx.yaml
+  307  kubectl apply -f createServiceNginx.yaml
+  308  clear
+  309  history
+  310  kubectl get pods -n kube-system -o wide
+  311  kubectl --hel
+  312  kubectl --help
+  313  clear
+  314  kubectl cluster-info
+  315  kubectl cluster-info dump
+  316  kubectl cluster-info dump | grep -i cluster
+  317  kubectl cluster-info dump | grep -i cluster-cidr
+  318  kubectl cluster-info dump | grep -m 1 cluster-cidr
+  319  kubectl cluster-info dump | grep -m 1 service-cluster-ip-range
+  320  clear
+  321  kubectl get pods -n kube-system -o wide
+  322  clear \
+  323  clear
+  324  kubectl describe pod kube-proxy-gbd9q
+  325  kubectl describe pod kube-proxy-gbd9q -n kube-system
+  326  clear
+  327  kubectl get svc
+  328  vi createServiceNginx.yaml
+  329  kubectl apply -f createServiceNginx.yaml
+  330  kubectl get svc
+  331  kubectl descrive svc
+  332  kubectl describe svc
+  333  kubectl create deployment vote --image thinknyx/vote:1.0
+  334  kubectl get pods
+  335  kubectl scale deployment vote --replicas=4
+  336  kubectl get pods
+  337  kubectl get pods -o wide | grep -i vote
+  338  history
+  339  kubectl expose deployment vote --port 80 --type NodePort --external-ip 3.238.102.254
+  340  kubectl  get svc
+  341  kubectl describe svc vote
+  342  kubectl get pods -o wide | grep -i vote
+  343  kubectl set image deployment vote *=thinknyx/vote:2.0
+  344  kubectl get pods -o wide | grep -i vote
+  345  clear
+  346  kubectl get rs
+  347  kubectl rollout undo  deployment vote
+  348  kubectl get rs
+  349  history
+  350  git status
+  351  git add .
+  352  git commit -m "updated Service yamls
+"
+  353  git push origin master
+  354  clear
+  355  kubectl get ep
+  356  kubectl get ep -o wide
+  357  kubectl describe ep day1-svc
+  358  clear
+  359  cd ../ansible/
+  360  ansible master -i hosts --ask-pass -m yum -a "name=nfs-utils state=present"
+  361  df -h
+  362  clear
+  363  kubectl get rs
+  364  kubectl rollout history deployment vote
+  365  kubectl rollout undo deployment vote
+  366  kubectl rollout history deployment vote
+  367  df -h | grep -i l8s-storage
+  368  df -h | grep -i k8s-storage
+  369  vote-7bb46f6589    4         4         4       30m
+  370  clear
+  371  ansible master -i hosts --ask-pass -a "mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-8980667c.efs.us-east-1.amazonaws.com:/ /k8s-storage"
+  372  history
+  373  df -h | grep -i k8s-storage
+  374  clear
+  375  ansibleall -i hosts --ask-pass -a "df -h | grep -i k8s-storage"
+  376  ansible all -i hosts --ask-pass -a "df -h | grep -i k8s-storage"
+  377  clear
+  378  df -h | grep -i k8s-storage
+  379  ansible all -i hosts --ask-pass -a "df -h && grep -i k8s-storage"
+  380  clear
+  381  ansible all -i hosts --ask-pass -m shell -a "df -h && grep -i k8s-storage"
+  382  ansible all -i hosts --ask-pass -m shell -a "df -h | grep -i k8s-storage"
+  383  cd ../thinknyx-optum/
+  384  clear
+  385  kubectl get pv
+  386  vi createPV.yaml
+  387  kubectl apply -f createPV.yaml
+  388  kubectl get pv
+  389  vi createPVC.yaml
+  390  kubectl apply -f createPVC.yaml
+  391  kubectl get pvc
+  392  clear
+  393  ll
+  394  kubectl get pods
+  395  kubectl exec -it day1-c6f4fbb59-48kxf -- /bin/bash
+  396  vi createDeployment.yaml
+  397  ls -ltr /k8s-storage/
+  398  kubectl apply -f createDeployment.yaml
+  399  kubectl get pods
+  400  kubectl get svc
+  401  kubectl describe svc day1-svc
+  402  ls -ltr /k8s-storage/
+  403  ls -ltr
+  404  vi createDeployment.yaml
+  405  clear
+  406  kubectl get pods
+  407  kubectl get pods  -o wide
+  408  ssh root@3.91.25.225
+  409  vi createDeployment.yaml
+  410  kubectl apply -f createDeployment.yaml
+  411  kubectl get pods  -o wide
+  412  ls -ltr /k8s-storage/
+  413  clear
+  414  kubectl exec -it day1-76ffcfb774-2c6m9 -- /bin/bash
+  415  hostname >> /k8s-storage/index.html
+  416  kubectl exec -it day1-76ffcfb774-2c6m9 -- /bin/bash
+  417  ssh root@3.91.25.225
+  418  cat createPV.yaml
+  419  kubectl get pods
+  420  kubectl delete pods day1-76ffcfb774-2c6m9   day1-76ffcfb774-gcxqf day1-76ffcfb774-wzxjl
+  421  kubectl get pods
+  422  kubectl delete pod day1-76ffcfb774-672w7
+  423  git status
+  424  git commit -am " added volumes & volume mounts"
+  425  git add createPV.yaml createPVC.yaml
+  426  git commit -am "added PV & PVC using hostpath"
+  427  git push origin master
+  428  history
+  429  df -h && grep -i k8s-storage
+  430  ll
+  431  clear
+  432  ll
+  433  cat createPV-NFS.yaml
+  434  cat createPVC-nfs.yaml
+  435  git status
+  436  git add createPV-NFS.yaml createPVC-nfs.yaml
+  437  git commit -m "added PV & PVC for NFS"
+  438  clear
+  439  vi configMaps.yaml
+  440  kubectl apply -f configMaps.yaml
+  441  kubectl get cm
+  442  kubectl describe cm cm-1
+  443  vi createPod.yaml
+  444  kubectl apply -f createPod.yaml
+  445  vi createPod.yaml
+  446  kubectl apply -f createPod.yaml
+  447  kubectl get pods
+  448  kubectl exec -it kul -- printenv
+  449  vi createPod.yaml
+  450  clear
+  451  kubectl describe cm cm-1
+  452  kubectl create secret generic db-cred --from-literal=db_user=mysql --from-literal=db_pwd=1234567
+  453  kubectl get secret
+  454  kubectl describe secret db-cred
+  455  kubectl create secret --help
+  456  git status
+  457  git commit -am "added envFrom using config maps"
+  458  vi createPod.yaml
+  459  kubectl apply -f createPod.yaml
+  460  kubectl delete -f createPod.yaml
+  461  kubectl apply -f createPod.yaml
+  462  clear
+  463  kubectl get pod
+  464  history
+  465  kubectl exec -it kul -- printenv
+  466  git add configMaps.yaml
+  467  git commit -m "added configmap yaml"
+  468  clear
+  469  kubectl describe secret db-cred
+  470  git push origin master
+  471  history
+  472  clear
+  473  history
+  474  pwd
+  475  ll
+  476  ls -ltr /root/.ssh/
+  477  cat /root/.ssh/known_hosts
+  478  clear
+  479  git status
+  480  git commit -am "updated usage"
+  481  git push origin master
+  482  clear
+  483  kubectl create secret generic secret-from-file --from-file=/root/.ssh/known_hosts
+  484  kubectl describe secret secret-from-file
+  485  vi createPod.yaml
+  486  kubectl delete -f createPod.yaml
+  487  kubectl apply -f createPod.yaml
+  488  kubectl exec -it kul -- /bin/bash
+  489  docker create secret --help
+  490  kubectl create secret --help
+  491  kubectl create secret docker-registry --help
+  492  clear
+  493  kubectl get secret
+  494  kubectl describe secret secret-from-file
+  495  ssh-keygen
+  496  clear
+  497  kubectl create secret generic secret-keys --from-file=/root/.ssh/id_rsa --from-file=/root/.ssh/id_rsa.pub
+  498  kubectl describe secret/secret-keys
+  499  vi createPod.yaml
+  500  kubectl exec -it kul -- /bin/bash
+  501  kubectl delete -f createPod.yaml
+  502  kubectl apply -f createPod.yaml
+  503  kubectl exec -it kul -- /bin/bash
+  504  history
+  505  git status
+  506  git commit -am "added volume & volumemounts using secrets"
+  507  git push origin master
+  508  cat /root/.docker/config.json
+  509  kubectl create secret generic docker-cred --from-file=.dockerconfigjson=/root/.docker/config.json --type=kubernetes.io/dockerconfigjson
+  510  clear
+  511  kubectl describe secret docker-cred
+  512  vi createPod.yaml
+  513  kubectl create secret docker-registry docker_cred --docker-server=https://index.docker.io/v1/ --docker-username=kulbhushanmayer --docker-password=ghagDHJJVsKJH --docker-email=support@thinknyx.com
+  514  kubectl create secret docker-registry dockercred --docker-server=https://index.docker.io/v1/ --docker-username=kulbhushanmayer --docker-password=ghagDHJJVsKJH --docker-email=support@thinknyx.com
+  515  kubectl describe secret dockercred
+  516  history
+  517  kubectl get secrets
+  518  kubectl cordon node-1
+  519  kubectl get nodes
+  520  kubectl drain node-2
+  521  kubectl drain node-2 --ignore-daemonsets
+  522  kubectl drain node-2 --ignore-daemonsets --force
+  523  kubectl get pods
+  524  kubectl get nodes
+  525  kubectl uncordon node-2
+  526  kubectl get pods
+  527  clear
+  528  kubectl get nodes
+  529  kubectl cordon node-1
+  530  kubectl get nodes
+  531  kubectl  get pods -o wide | grep -i node-1
+  532  kubectl  get pods -o wide -A| grep -i node-1
+  533  clear
+  534  kubectl get deployment
+  535  kubectl  get pods -o wide -A| grep -i vote
+  536  kubectl scale deployment vote --replicas=6
+  537  kubectl  get pods -o wide -A| grep -i vote
+  538* kubectl scale deployment day1 --replicas=
+  539  kubectl  get pods -o wide -A| grep -i day1
+  540  kubectl  get pods -o wide -A| grep -i node-1
+  541  kubectl drain node-1
+  542  clear
+  543  kubectl drain node-1 --ignore-daemonsets
+  544  kubectl  get pods -o wide -A| grep -i node-1
+  545  kubectl  get pods -o wide -A| grep -i node-2
+  546  history
+  547  kubectl scale deployment vote --replicas=2
+  548  kubectl scale deployment day1 --replicas=2
+  549  clear
+  550  kubectl  get pods -o wide -A| grep -i node-2
+  551  kubectl scale deployment day1 --replicas=3
+  552  kubectl  get pods -o wide -A| grep -i node-2
+  553  kubectl scale deployment day1 --replicas=4
+  554  kubectl  get pods -o wide -A| grep -i node-2
+  555  kubectl uncordon node-1
+  556  kubectl scale deployment day1 --replicas=7
+  557  kubectl  get pods -o wide -A| grep -i node-1
+  558  history
+  559  kubectl get pods -o wide
+  560  kubectl get nodes
+  561  clear
+  562  kubectl describe nodes | grep -i taint
+  563  kubectl taint node node-1 size=heavy:NoSchedule
+  564  kubectl describe nodes | grep -i taint
+  565  git status
+  566  git commit -am "added pwd for docker registry"
+  567  kubectl delete -f createPod.yaml
+  568  kubectl delete deploy day1
+  569  kubectl get deploy
+  570  vi createDeployment.yaml
+  571  kubectl label node node-2 bu-
+  572  kubectl apply -f createDeployment.yaml
+  573  kubectl get pods
+  574  kubectl describe pods day1-76ffcfb774-4s4xq
+  575  vi createDeployment.yaml
+  576  kubectl apply -f createDeployment.yaml
+  577  kubectl get pods
+  578  cat createDeployment.yaml
+  579  history
+  580  git commit -am "added tolerations for the relative taints on Node"
+  581  git push origin master
+  582  history
+  583  kubectl taint node node-1 size=heavy:NoSchedule-
+  584  kubectl get nodes
+  585  kubectl describe nodes | grep -i taint
+  586  kubectl get pods
+  587  kubectl taint node node-1 size=heavy:NoExecute
+  588  kubectl get pods
+  589  kubectl taint node node-1 size=heavy:NoExecute-
+  590  kubectl get pods
+  591  kubectl taint node node-1 size=heavy:PreferNoSchedule
+  592  kubectl delete deploy day1
+  593  kubectl get pods
+  594  kubectl apply -f createDeployment.yaml
+  595  kubectl get pods
+  596  clear
+  597  kubectl describe nodes | grep -i taint
+  598  cat createDeployment.yaml
+  599  kubectl get pods | grep -i day1
+  600  kubectl get pods -o wide | grep -i day1
+  601  kubectl delete -f createDeployment.yaml
+  602  kubectl get pods -o wide | grep -i day1
+  603  clear
+  604  kubectl label node-2 bu=cde
+  605  kubectl label node node-2 bu=cde
+  606  kubectl apply -f createDeployment.yaml
+  607  kubectl get pods -o wide | grep -i day1
+  608  history
+  609  vi cronJob.yaml
+  610  kubectl apply -f cronJob.yaml
+  611  kubectl get cronjob
+  612  watch kubectl get pods | grep -i hello
+  613  kubectl get cronjob
+  614  kubectl get pods
+  615  kubectl get cronjob
+  616  watch kubectl get pods | grep -i hello
+  617  watch kubectl get pods
+  618  clear
+  619  git status
+  620  git add cronJob.yaml
+  621  git commit -m "added cronJOB yaml"
+  622  git push origin master
+  623  clear
+  624  history
