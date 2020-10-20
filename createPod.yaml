@@ -10,3 +10,6 @@ spec:
   containers: 
   - name: kul
     image: httpd
+    envFrom: 
+    - configMapRef: 
+        name: cm-1
