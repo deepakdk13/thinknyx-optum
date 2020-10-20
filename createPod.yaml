@@ -7,6 +7,10 @@ metadata:
     client: optum
     day: "1"
 spec: 
+  volumes: 
+  - name: secret-volume
+    secret:
+      secretName: secret-keys
   containers: 
   - name: kul
     image: httpd
@@ -15,3 +19,7 @@ spec:
         name: cm-1
     - secretRef: 
         name: db-cred
+    volumeMounts:
+    - name: secret-volume
+      readOnly: true
+      mountPath: "/tmp/keys/"
