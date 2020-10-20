@@ -19,6 +19,8 @@ spec:
         name: cm-1
     - secretRef: 
         name: db-cred
+    imagePullSecrets: 
+    - name: docker-cred
     volumeMounts:
     - name: secret-volume
       readOnly: true
