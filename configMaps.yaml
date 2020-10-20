@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: cm-1
+
+data: 
+  user: demo
+  url: http://something.com
