@@ -10,6 +10,19 @@ commands to retrived user(1) & cluster(2) certificate
 #1 kubectl get csr kulbhushan-k8s-access -o jsonpath='{.status.certificate}' | base64 --decode > kulbhushan-k8s-access.crt
 #2 kubectl config view -o jsonpath='{.clusters[0].cluster.certificate-authority-data}' --raw | base64 --decode - > cluster.crt
 
+## Commands to create complete contec for user
+
+kubectl config set-cluster $(kubectl config view -o jsonpath='{.clusters[0].name}') --server $(kubectl config view -o jsonpath='{.clusters[0].cluster.server}') --certificate-authority=cluster.crt --kubeconfig=kul-config --embed-certs
+
+kubectl config set-credentials kul --client-certificate=kulbhushan-k8s-access.crt --client-key=kul.key --kubeconfig=kul-config --embed-certs
+
+kubectl create ns kul
+
+kubectl config set-context kul --cluster=$(kubectl config view -o jsonpath='{.clusters[0].name}') --namespace=kul --user=kul --kubeconfig=kul-config
+
+
+
+
 ================================================================
   236  kubectl get nodes
   237  kubeadm token create --print-join-command
