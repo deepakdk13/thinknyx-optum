@@ -3,6 +3,13 @@ Command to generate CSR file(1) & CSR key(2)
 #1 openssl req -new -newkey rsa:4096 -nodes -keyout kul.key -out kul.csr -subj "/CN=kul/O=devops"
 #2 cat kul.csr | base64 | tr -d '\n'
 
+approve CSR using ## kubectl certificate approve kulbhushan-k8s-access
+
+commands to retrived user(1) & cluster(2) certificate
+
+#1 kubectl get csr kulbhushan-k8s-access -o jsonpath='{.status.certificate}' | base64 --decode > kulbhushan-k8s-access.crt
+#2 kubectl config view -o jsonpath='{.clusters[0].cluster.certificate-authority-data}' --raw | base64 --decode - > cluster.crt
+
 ================================================================
   236  kubectl get nodes
   237  kubeadm token create --print-join-command
