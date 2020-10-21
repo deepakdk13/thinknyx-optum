@@ -1,0 +1,12 @@
+apiVersion: certificates.k8s.io/v1beta1
+kind: CertificateSigningRequest
+metadata: 
+  name: kul-k8s-access
+spec: 
+  groups: 
+  - system:authenticated
+  
+  request: # Add ouput of | cat kul.csr | base64 | tr -d '\n' |  here 
+
+  usages: 
+  - client auth
