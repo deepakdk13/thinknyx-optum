@@ -1,3 +1,9 @@
+Command to generate CSR file(1) & CSR key(2)
+============================================
+#1 openssl req -new -newkey rsa:4096 -nodes -keyout kul.key -out kul.csr -subj "/CN=kul/O=devops"
+#2 cat kul.csr | base64 | tr -d '\n'
+
+================================================================
   236  kubectl get nodes
   237  kubeadm token create --print-join-command
   238  ssh root@3.235.94.16
