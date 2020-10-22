@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata: 
+  name: day1
+  namespace: kul
+  labels: 
+    client: optum
+    type: training
+  annotations: 
+    prodsupport: support@thinknyx.com
+    supportnumber: "9876543210"
+    githubrepo: "https://github.com/kmayer10/thinknyx-optum.git"
+    
+spec: 
+  replicas: {{ .Values.replicaCount }}
+  template: 
+    metadata: 
+      name: kul
+      labels:
+        client: optum
+        day: "1"
+    spec: 
+#      volumes: 
+#      - name: ht-docs
+#        persistentVolumeClaim: 
+#          claimName: pvc-hostpath
+      containers: 
+      - name: kul
+        image: httpd
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        volumeMounts: 
+#        - mountPath: "/usr/local/apache2/htdocs/"
+#          name: ht-docs
+        resources: 
+          requests:
+            memory: "64Mi"
+            cpu: "125m"
+          limits: 
+            memory: "96Mi"
+            cpu: "200m"
+      tolerations: 
+      - key: "size"
+        operator: "Equal"
+        value: "heavy"
+        effect: "NoSchedule"
+      nodeSelector: 
+        bu: cde
+  selector: 
+    matchLabels: 
+      client: optum
+      day: "1"
