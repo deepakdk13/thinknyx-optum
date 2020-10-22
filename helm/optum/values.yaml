@@ -2,3 +2,8 @@ replicaCount: 3
 
 image: 
   pullPolicy: IfNotPresent
+  repo: httpd
+  tag: latest
+
+selectors: 
+  appName: optum

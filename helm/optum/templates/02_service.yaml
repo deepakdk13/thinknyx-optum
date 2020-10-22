@@ -22,4 +22,4 @@ spec:
   type: NodePort
 
   selector: 
-    day: "1"
+    client: {{ .Values.selectors.appName }}
