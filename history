@@ -1,3 +1,13 @@
+############### Configuring VPA
+
+git clone https://github.com/kubernetes/autoscaler.git
+git checkout vpa-release-0.8
+cd autoscaler/
+./vertical-pod-autoscaler/hack/vpa-up.sh
+kubectl get pods -n kube-system
+====================================================================
+
+
 Command to generate CSR file(1) & CSR key(2)
 ============================================
 #1 openssl req -new -newkey rsa:4096 -nodes -keyout kul.key -out kul.csr -subj "/CN=kul/O=devops"
